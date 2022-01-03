@@ -4,19 +4,24 @@ const deps = require('./package.json').dependencies;
 module.exports = {
   entry: './src/index',
   cache: false,
-
   resolve: {
-    extensions: ['.jsx', '.js', '.json'],
+    extensions: [".ts", ".tsx", ".js"],
   },
-
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /bootstrap\.tsx$/,
+        loader: require.resolve('bundle-loader'),
+        options: {
+          lazy: true,
+        },
+      },
+      {
+        test: /\.tsx?$/,
         loader: require.resolve('babel-loader'),
         exclude: /node_modules/,
         options: {
-          presets: [require.resolve('@babel/preset-react')],
+          presets: [require.resolve('@babel/preset-react'), require.resolve('@babel/preset-typescript')],
         },
       },
     ],
