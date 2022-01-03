@@ -14,7 +14,7 @@ module.exports = {
   },
 
   output: {
-    publicPath: process.env.MODE === 'production' ? 'https://victorsoares-app1.netlify.app/' : 'http://localhost:3001/',
+    publicPath: process.env.NODE_ENV === 'production' ? 'https://victorsoares-app1.netlify.app/' : 'http://localhost:3001/',
   },
 
   resolve: {
@@ -51,7 +51,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      url: process.env.MODE === 'production' ? 'https://victorsoares-app1.netlify.app/remoteEntry.js' : 'http://localhost:3002/remoteEntry.js',
+      url: process.env.NODE_ENV === 'production' ? 'https://victorsoares-app1.netlify.app/remoteEntry.js' : 'http://localhost:3002/remoteEntry.js',
     }),
   ],
 };
