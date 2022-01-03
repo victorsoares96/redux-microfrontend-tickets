@@ -38,9 +38,5 @@ module.exports = {
         },
       },
     }),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-      // url: 'https://victorsoares-app1.netlify.app/remoteEntry.js',
-    }),
   ],
 };

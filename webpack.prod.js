@@ -6,4 +6,11 @@ module.exports = merge(common, {
   output: {
     publicPath: "auto",
   },
+  plugins: [
+    ...common.plugins,
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      url: 'https://victorsoares-app2.netlify.app/remoteEntry.js',
+    }),
+  ],
 });

@@ -13,4 +13,11 @@ module.exports = merge(common, {
   output: {
     publicPath: "http://localhost:3001/",
   },
+  plugins: [
+    ...common.plugins,
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      url: 'http://localhost:3002/remoteEntry.js',
+    }),
+  ],
 });
