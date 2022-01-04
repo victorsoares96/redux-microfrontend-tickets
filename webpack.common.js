@@ -34,9 +34,13 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: 'app1',
-      library: { type: 'var', name: 'app1' },
+      name: 'tickets',
+      library: { type: 'var', name: 'tickets' },
       filename: 'remoteEntry.js',
+      exposes: {
+        './tickets/redux/hooks': './src/redux/hooks',
+        './tickets/redux/tickets/tickets.slice': './src/redux/tickets/tickets.slice',
+      },
       shared: {
         ...deps,
         react: {
