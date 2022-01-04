@@ -1,8 +1,10 @@
 {
-  "name": "redux-microfrontend-tickets",
+  "name": "tickets",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@efox/emp-cli": "^1.10.2",
+    "@efox/emp-tune-dts-plugin": "^1.3.5",
     "@material-ui/core": "^4.9.4",
     "@reduxjs/toolkit": "^1.7.1",
     "react": "^16.13.0",

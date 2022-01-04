@@ -1,3 +1,5 @@
+import React, { ComponentType } from "react";
+
 const dynamicFederation = async (scope: string, module: any) => {
   const container = window[scope]; // or get the container somewhere else
   // Initialize the container, it may provide shared modules
@@ -8,4 +10,6 @@ const dynamicFederation = async (scope: string, module: any) => {
   });
 };
 
-export default dynamicFederation;
+export function importFederatedModule<T extends ComponentType<any>>(name: string, federatedModule: any) {
+  return React.lazy<T>(() => dynamicFederation(name, federatedModule));
+}

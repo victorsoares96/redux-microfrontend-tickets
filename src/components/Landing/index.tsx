@@ -2,9 +2,10 @@ import React, { Suspense } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { store } from "../../redux/store";
 import { createTicket } from "../../redux/tickets/tickets.slice";
-import dynamicFederation from "../../utils/dynamicFederation";
+import { importFederatedModule } from "../../utils/general";
+import MFEUsers from 'users/App';
 
-const RemoteApp = React.lazy(() => dynamicFederation("app2", "./RemoteApp"));
+const Users = importFederatedModule<typeof MFEUsers>('users', './users/App');
 
 const Landing = () => {
   const dispatch = useAppDispatch();
@@ -50,7 +51,7 @@ const Landing = () => {
       </div>
 
       <Suspense fallback="Loading...">
-        <RemoteApp store={store} />
+        <Users hostStore={store} />
       </Suspense>
     </div>
   );

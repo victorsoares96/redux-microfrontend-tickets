@@ -1,5 +1,10 @@
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const { TuneDtsPlugin } = require('@efox/emp-tune-dts-plugin');
+const path = require('path');
 const deps = require('./package.json').dependencies;
+
+const createName = 'tickets.d.ts'
+const createPath = './src/@types'
 
 module.exports = {
   entry: './src/index',
@@ -42,5 +47,11 @@ module.exports = {
         },
       },
     }),
+    new TuneDtsPlugin({
+      output: path.join(createPath, createName),
+      path: createPath,
+      name: createName,
+      isDefault:true
+    })
   ],
 };
